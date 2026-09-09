@@ -1,0 +1,6 @@
+rclone.conf
+*.conf
+*.log
+*~
+*.swp
+.DS_Store
