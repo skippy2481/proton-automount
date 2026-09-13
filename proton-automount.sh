@@ -99,14 +99,14 @@ rclone_run() {
         env \
             "${RC_PREFIX}TYPE=protondrive" \
             "${RC_PREFIX}USERNAME=${PROTON_USERNAME}" \
-            "${RC_PREFIX}PASSWORD=$(rclone obscure "$PROTON_PASSWORD")" \
+            "${RC_PREFIX}PASSWORD=$(rclone obscure -- "$PROTON_PASSWORD")" \
             "${RC_PREFIX}2FA=${code}" \
             rclone "$@"
     else
         env \
             "${RC_PREFIX}TYPE=protondrive" \
             "${RC_PREFIX}USERNAME=${PROTON_USERNAME}" \
-            "${RC_PREFIX}PASSWORD=$(rclone obscure "$PROTON_PASSWORD")" \
+            "${RC_PREFIX}PASSWORD=$(rclone obscure -- "$PROTON_PASSWORD")" \
             rclone "$@"
     fi
 }

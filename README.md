@@ -182,6 +182,14 @@ It only removes the `[protondrive]` section from `rclone.conf`, so other remotes
 - Each mount performs a full login (SRP + 2FA), which takes a few seconds longer than cached-credential mounts — that's intentional
 - Repeated failed logins can hit Proton's rate limiting; wait a few minutes if you mistype your password/2FA several times
 
+- Repeated failed logins can hit Proton's rate limiting; wait a few minutes if you mistype your password/2FA several times
+
+### Known issue: passwords starting with `-`
+
+If your Proton password begins with a dash, earlier versions of the script failed at login with an error like `unknown shorthand flag: 'J' in -JSj9...` — rclone was trying to parse the password itself as a command-line flag.
+
+**Fixed:** the script now calls `rclone obscure -- "$PROTON_PASSWORD"`. The `--` is an argument terminator that tells the program "no more flags, everything after this is data." If you're running an older copy, update to the latest version.
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
