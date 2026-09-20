@@ -6,3 +6,5 @@ rclone.conf
 .DS_Store
 *.bak
 *.env
+*.txt
+*.tar.gz
